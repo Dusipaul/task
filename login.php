@@ -7,10 +7,13 @@ include('./db_connect.php');
   // if(!isset($_SESSION['system'])){
 
     $system = $conn->query("SELECT * FROM system_settings");
-    $result = $system->fetch_array();
-    foreach($result as $k => $v){
-      $_SESSION['system'][$k] = $v;
+    if ($system) {
+      $result = $system->fetch_array();
+      foreach($result as $k => $v){
+        $_SESSION['system'][$k] = $v;
+      }
     }
+    
   // }
   ob_end_flush();
 ?>
