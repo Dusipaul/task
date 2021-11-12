@@ -7,7 +7,8 @@ include('./db_connect.php');
   // if(!isset($_SESSION['system'])){
 
     $system = $conn->query("SELECT * FROM system_settings");
-    if (mysqli_num_rows($system) > 0) {
+    die($system->num_rows)
+    if ($system->num_rows > 0) {
       $result = $system->fetch_array();
       foreach($result as $k => $v){
         $_SESSION['system'][$k] = $v;
