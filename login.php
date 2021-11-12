@@ -6,8 +6,8 @@ include('./db_connect.php');
   ob_start();
   // if(!isset($_SESSION['system'])){
 
-    $system = $conn->query("SELECT * FROM system_settings");
-    die($system->num_rows)
+    $system = $conn->query("SELECT * FROM system_settings") or die("Last error: {$conn->error}\n");
+    
     if ($system->num_rows > 0) {
       $result = $system->fetch_array();
       foreach($result as $k => $v){
